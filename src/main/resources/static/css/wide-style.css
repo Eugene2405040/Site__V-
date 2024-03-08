@@ -1,0 +1,54 @@
+/* TODO: replace to another separated file for using only with desktop computers */
+@media screen and (min-width: 741px) {
+    main {
+        font-size: 20px;
+    }
+    /*nav {
+        width: 90%;
+        max-width: 1300px;
+    }*/
+    main, nav, footer div {
+        width: 90%;
+        margin: 0 auto;
+        max-width: 1400px;
+    }
+    #top_section{
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .top_image {
+        background-size: 50%;
+    }
+
+    #call_me {
+        width: fit-content;
+    }
+
+    .why-us ul {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .why-us li {
+        width: 45%;
+    }
+
+    .why-us__1:before,
+    .why-us__2:before,
+    .why-us__3:before,
+    .why-us__4:before {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 80px;
+        margin: auto;
+        border: 3px solid #ffa100;
+        border-radius: 50%;
+    }
+
+
+    footer ul {
+        width: 33%;
+        font-size: 0.7em;
+    }
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<nav th:fragment="nav">
+    <a id="home-button" href="/" title="ГЛАВНАЯ"></a>
+
+    <div id="nav-button" onclick="document.getElementById('top_nav').classList.toggle('collapsed')"></div>
+
+    <div id="top_nav"<!--/* class="collapsed" */-->>
+
+    <ul>
+        <li><a href="/">Site</a></li>
+        <li><a href="/admin">Admin</a></li>
+        <li><a href="/admin/delete">Delete page</a></li>
+        <li><a href="/admin/create">Create page</a></li>
+        <li><a href="/admin/update">Update page</a></li>
+        <li><a href="/log-out" id="logout">logout</a></li>
+    </ul>
+
+    </div>
+
+</nav>
+</html>

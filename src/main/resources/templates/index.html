@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}"></head>
+<body>
+<header>
+    <nav th:replace="~{fragments/nav :: nav}"></nav>
+</header>
+<main>
+
+    <h1 th:text="${h1}"></h1>
+
+    <section id="top_section">
+        <div class="top_image" style="">
+            <form id="call_me">
+                <div class="pink bold upper-case">Закажите обратный звонок!</div>
+
+                <input type="hidden" name="page_address" value="/index.html">
+                <div>
+                    <input type="text" id="client_name" name="name" placeholder="Имя">
+                </div>
+                <div>
+                    <input type="tel" id="input-phone" maxlength="19" value="" required="" name="phone"
+                           placeholder="+7 (___) ___-__-__">
+                </div>
+
+                <div>
+                    <button id="call_me_button" class="gold" type="submit">Заказать звонок</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <th:block class="body" th:utext="${body}"></th:block>
+
+    <div class="wrapper why-us">
+
+        <h2>Почему выбирают нас?</h2>
+        <ul>
+            <li class="why-us__1">
+                <h3>Быстро</h3>
+                Если ремонт выполняется в мастерской, приступаем к работе незамедлительно.
+                Если на дому, в 95% случаев ремонтируем за 1 приезд.
+            </li>
+            <li class="why-us__2">
+                <h3>Качественный ремонт</h3>
+                Мы выполняем ремонт качественно и даем гарантию до 12 месяцев.
+            </li>
+        </ul>
+        <ul>
+            <li class="why-us__3">
+                <h3>Качественные запчасти</h3>
+                Используем только качественные запчасти, т.к. даем гарантию, а по гарантии ремонтируем бесплатно.
+            </li>
+            <li class="why-us__4">
+                <h3>Привлекательные цены</h3>
+                Наши цены ниже средних по рынку.
+            </li>
+        </ul>
+    </div>
+
+
+    <div id="fading-text-brands" class="brand fading-text">
+        <h2>Бренды которые мы ремонтируем</h2>
+        <ul class="readmore-js-section">
+            <li>Aeg</li>
+            <li>Amana</li>
+            <li>Ardo</li>
+            <li>Ariston</li>
+            <li>Atlant</li>
+            <li>Bauknecht</li>
+            <li>Beko</li>
+            <li>Blomberg</li>
+            <li>Bomann</li>
+            <li>Bompani</li>
+            <li>Bosch</li>
+            <li>Candy</li>
+            <li>Daewoo</li>
+            <li>De Dietrich</li>
+            <li>Electrolux</li>
+            <li>Fagor</li>
+            <li>Fhiaba</li>
+            <li>Franke</li>
+            <li>Frigidaire</li>
+            <li>Gaggenau</li>
+            <li>General Electrik</li>
+            <li>Ginzzu</li>
+            <li>Gorenje</li>
+            <li>Hisense</li>
+            <li>Hansa</li>
+            <li>Hitachi</li>
+            <li>IO MABE</li>
+            <li>Ilve</li>
+            <li>Indesit</li>
+            <li>Jackys</li>
+            <li>Kaiser</li>
+            <li>KitchenAid</li>
+            <li>KRAFT</li>
+            <li>Kuppersberg</li>
+            <li>Kuppersbusch</li>
+            <li>Lg</li>
+            <li>Liebherr</li>
+            <li>Maytag</li>
+            <li>Miele</li>
+            <li>Midea</li>
+            <li>Mitsubishi Electric</li>
+            <li>Nardi</li>
+            <li>Neff</li>
+            <li>Panasonic</li>
+            <li>Samsung</li>
+            <li>Sharp</li>
+            <li>Shivaki</li>
+            <li>Siemens</li>
+            <li>Smeg</li>
+            <li>Stinol</li>
+            <li>Sub Zero</li>
+            <li>Supra</li>
+            <li>Teka</li>
+            <li>Toshiba</li>
+            <li>Vestel</li>
+            <li>Vestfrost</li>
+            <li>Viking</li>
+            <li>Weissgauff</li>
+            <li>Whirlpool</li>
+            <li>Zanussi</li>
+            <li>Zigmund Shtain</li>
+        </ul>
+        <div class="fade" style="display: block;"></div>
+    </div>
+    <div id="fading-text-brands-btn" class="readmore-js-toggle center">Показать все</div>
+
+
+    <th:block th:utext="${seo}"></th:block>
+
+    <!--/*   TODO: point the picture url in this input value like: value="url(/pictures/Ref-table.webp) */-->
+    <input type="hidden" id="topImgUrl" value="url(/pictures/Ref-table.webp)">
+
+</main>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+
+<script>
+document.getElementById("top_nav").classList.add('collapsed');
+
+<!--window.addEventListener('DOMContentLoaded', (event) => {-->
+setTimeout((e) =>{
+    document.querySelector('.top_image').style.backgroundImage = document.getElementById("topImgUrl").value
+}, 200);
+
+<!--});-->
+
+
+</script>
+</body>
+</html>

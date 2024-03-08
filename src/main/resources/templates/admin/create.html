@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title th:text="${title}">Site Analyzer</title>
+    <meta name="description" data-th-content="${description}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin/style.css">
+
+<!--    <script src="https://cdn.tiny.cloud/1/ujvuv2asjkkb5b7xlx0wpsbc5r322dasf5w8b99wcpfr5yvi/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>-->
+<!--    <script>-->
+<!--    // Краткий список WYSIWYG редакторов:-->
+<!--    // https://habr.com/ru/articles/129262/-->
+<!--    // this one :   https://www.tiny.cloud/my-account/integrate/#html-->
+<!--      tinymce.init({-->
+<!--        selector: '#mytextarea'-->
+<!--      });-->
+<!--    </script>-->
+</head>
+<body>
+<nav th:replace="~{admin/fragments/admin_nav :: nav}"></nav>
+
+
+<form id="picForm" method="POST" enctype="multipart/form-data" action="/pictures" target="mytarget">
+    <div name="mytarget" style="width: 800px; height: 125px;"></div>
+    File to upload:
+    <input type="file" name="file"><br />
+    Name:
+    <input type="text" name="name"><br /> <br />
+    <input type="submit" value="Upload"> Press here to upload the file!
+</form>
+<!-- TODO: implement script-->
+<script>
+<!--document.getElementById("picForm").onsubmit = (e) =>{-->
+<!--    e.preventDefault();-->
+<!--    fetch("/pictures").then(function (response) {-->
+<!--        response.text().then(function (text) {-->
+<!--            poemDisplay.textContent = text;-->
+<!--        });-->
+<!--    });-->
+<!--}-->
+</script>
+<!--<form method="post">-->
+<!--&lt;!&ndash;    https://www.tiny.cloud/my-account/integrate/#html&ndash;&gt;-->
+<!--    <textarea id="mytextarea">Hello, World!</textarea>-->
+<!--</form>-->
+
+
+<form method="post" action="">
+    <label class="required">Category name
+        <input type="text" th:value="${category} ? ${category.name}"
+               class="form-data category" id="name" required
+               onblur="/*document.getElementById('path').value = formatEnglishURL(this.value)*/">
+    </label>
+
+    <label class="required">Parent category name
+        <select class="form-data category" id="parentId" required>
+            <option value="0">Main category</option>
+            <option th:each="categories : ${categories}" th:value="${categories.id}" th:text="${categories.name}"></option>
+        </select>
+    </label>
+
+    <label class="required">Sequence
+        <input th:value="${category} ? ${category.sequence}" class="form-data category" id="sequence" type="number" required>
+    </label>
+
+    <label class="required">URL <u onclick="document.getElementById('path').value = formatEnglishURL(document.getElementById('name').value)">fill URL</u>
+        <input th:value="${category} ? ${category.path}" type="text" class="form-data category" id="path" required>
+    </label>
+    <label class="required">Title (recommended number of characters 70-80)
+        <input th:value="${category} ? ${category.page.title}" type="text" class="form-data page" id="title" required>
+    </label>
+    <label class="required">Description (recommended number of characters 150-275)
+        <input th:value="${category} ? ${category.page.description}" type="text" class="form-data page" id="description" required>
+    </label>
+    <label>Key Words
+        <input th:value="${category} ? ${category.getPage.getKeyWords}" type="text" class="form-data page" id="keyWords">
+    </label>
+
+    <label>h1
+        <input th:value="${category} ? ${category.page.h1}" type="text" class="form-data page" id="h1" required>
+    </label>
+
+    <section id="body-preview"></section>
+    <section class="body-tags">
+        <div>section</div>
+        <div>h2</div>
+        <div>p</div>
+        <div>a</div>
+        <div>span</div>
+        <div>ul</div>
+        <div>ol</div>
+        <div>li</div>
+        <div>img</div>
+        <div>br</div>
+        <div>pre</div>
+        <div>b</div>
+        <div>i</div>
+        <div>hr</div>
+        <div>picture</div>
+        <div>source</div>
+        <div>p</div>
+        <div>p</div>
+        <div>p</div>
+        <div>p</div>
+        <div>p</div>
+        <div>p</div>
+        <div>p</div>
+    </section>
+    <label class="required">Body
+        <textarea th:utext="${category} ? ${category.page.body}" class="form-data page" id="body" required
+            oninput="document.getElementById('body-preview').innerHTML = this.value"></textarea>
+    </label>
+
+
+
+<!--    <div>-->
+<!--        <input type="file" id="filetoupload"><br>-->
+<!--        <input type="button" id="button" value="button" style="width:150px;">-->
+<!--    </div>-->
+<!--<script>-->
+<!--document.getElementById('button').onclick = function() {-->
+<!--  var file = document.getElementById('filetoupload').files[0];-->
+<!--  if (file) upload(file);-->
+
+<!--  function upload(file) {-->
+<!--    var xhr = new XMLHttpRequest();-->
+<!--    xhr.open("POST", "/upload-image", true);-->
+<!--    xhr.setRequestHeader("Content-type", "multipart/form-data");-->
+<!--    xhr.send(file);-->
+
+<!--    xhr.onload = xhr.onerror = function() {-->
+<!--      if (this.status == 200) {-->
+<!--        console.log('Файл загружен');-->
+<!--      } else {-->
+<!--        console.log("error " + this.status);-->
+<!--      }-->
+<!--    };-->
+<!--  }-->
+<!--};-->
+<!--</script>-->
+
+
+    <label>SEO block
+        <textarea th:utext="${category} ? ${category.page.seoBlock}" class="form-data page" id="seoBlock"></textarea>
+    </label>
+
+    <button class="post-button">Send</button>
+
+</form>
+
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+
+<th:block th:each="script : ${scripts}">
+    <script th:src="${script}"></script>
+</th:block>
+
+<script src="/js/admin/logout.js"></script>
+
+<script>
+    document.getElementById("top_nav").classList.add('collapsed');
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/create :: head}"></head>
+<body>
+<nav th:replace="~{admin/fragments/admin_nav :: nav}"></nav>
+
+<h1>H1</h1>
+<form method=""  action="">
+    <!--/*
+    <label>Category name
+        <input type="text" class="form-data" id="name">
+    </label>
+    */-->
+
+    <label>Page
+        <select class="form-data" id="categoryId">
+            <option selected value="null"></option>
+            <option th:each="categories : ${categories}" th:value="${categories.id}" th:text="${categories.name}"></option>
+        </select>
+    </label>
+
+    <!--/*
+    <label>Sequence
+        <input class="form-data" id="sequence" type="number">
+    </label>
+    */-->
+    <button>Button</button>
+</form>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+<th:block th:each="script : ${scripts}">
+    <script th:src="${script}"></script>
+</th:block>
+
+<!--/*
+<script src="/js/admin/sendFormData.js"></script>
+*/-->
+
+<script>
+    document.getElementById("top_nav").classList.add('collapsed');
+</script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 1.2em;
+    font-weight: 200;
+    padding: 20px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 1.1em;
+    font-weight: normal;
+}
+
+h3 {
+    font-size: 1.0em;
+}
+
+header {
+    height: 50px;
+    width: 100%;
+    box-shadow: 0 10px 25px #888;
+    background-color: rgb(240, 240, 240);
+    margin-bottom: 50px;
+}
+
+header nav{
+    position: relative;
+    display: block;
+    height: 100%;
+    text-transform: uppercase;
+    margin: 0 auto 20px auto;
+}
+
+#home-button{
+    width: 50px;
+    height: 50px;
+    background: url(/img/icon/icon.svg) no-repeat;
+    background-size: contain;
+    display: inline-block;
+}
+
+#phone{
+    position: relative;
+    float: right;
+    top: 10px;
+    margin-right: 25px;
+
+}
+
+#nav-button{
+    width: 50px;
+    height: 50px;
+    background: url(/img/svg/hamburger.svg) no-repeat;
+    background-size: contain;
+    float: right;
+    cursor: pointer;
+    background-color: gold;
+}
+
+nav a, a:visited{
+    color: blue;
+}
+
+.collapsed{
+    display: none;
+}
+
+nav ul{
+background-color: aliceblue;
+    width: 100%;
+    max-width: 500px;
+    right: 0;
+    position: absolute;
+}
+nav ul li{
+	margin: 5px;
+	padding: 5px;
+	border-bottom: solid #eee;
+}
+nav ul li a{
+    display:block;
+    width: 100%;
+}
+
+main {
+    min-height: 60%;
+}
+
+main > * {
+    padding:5px;
+}
+
+section {
+    padding:0px;
+}
+
+/*****************************************************************************************/
+.top_image {
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    min-height: 300px;
+}
+
+form {
+    margin: 10px;
+    padding: 10px;
+}
+
+#call_me input {
+    margin: 10px 10px 10px 0;
+    padding: 10px;
+    background: white;
+    min-width: 240px;
+    box-shadow: 0 0 10px #888;
+}
+
+#call_me input:focus {
+    box-shadow: 0 0 5px #850;
+}
+
+#call_me_button {
+    min-width: 240px;
+    height: 40px;
+    border-radius: 30px;
+    margin: 10px auto;
+}
+
+#call_me {
+    background-color: rgba(240, 240, 240, 0.7);
+}
+/**************************************   end  **********************************************/
+
+.brand ul li {
+    display: inline-block;
+    vertical-align: top;
+    width: 112px;
+    margin: 8px auto;
+    font-size: 0.8em;
+    text-align: -webkit-match-parent;
+}
+
+footer {
+    margin-top: 150px;
+    box-shadow: 0 -10px 25px #888;
+    font-size: 1.3em;
+    background-color: rgb(240, 240, 240);
+}
+
+.fs-12{
+    font-size: 12px;
+}
+
+.gold{
+    background-color: gold;
+}
+
+

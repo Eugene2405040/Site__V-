@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<nav th:fragment="nav">
+    <!--/* This code will be removed at Thymeleaf parsing time! */-->
+    <!--/*-->
+    comments
+    <!--*/-->
+    <a id="home-button" href="/" title="ГЛАВНАЯ"></a>
+    <div id="nav-button" onclick="document.getElementById('top_nav').classList.toggle('collapsed')"></div>
+    <a id="phone" href="tel:+74732956060">+7(473) 295-60-60</a>
+    <div id="top_nav"><!--/* class="collapsed" */-->
+        <ul>
+            <li><a href="/">ГЛАВНАЯ</a></li>
+            <li th:each="categories : ${categories}" th:value="${categories.id}">
+                <a th:href="${(categories.path != null and categories.path != 'null' and categories.path.length  > 0)
+                        ? '/' + categories.path : '#'}" th:text="${categories.name}"></a>
+            </li>
+            <li><a href="/admin">admin</a></li>
+        </ul>
+    </div>
+</nav>
+</html>
