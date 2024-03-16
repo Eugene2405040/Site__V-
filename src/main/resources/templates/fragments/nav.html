@@ -6,10 +6,12 @@
     comments
     <!--*/-->
     <a id="home-button" href="/" title="ГЛАВНАЯ"></a>
-    <div id="nav-button" onclick="document.getElementById('top_nav').classList.toggle('collapsed')"></div>
-    <a id="phone" href="tel:+74732956060">+7(473) 295-60-60</a>
-    <div id="top_nav"><!--/* class="collapsed" */-->
-        <ul>
+    <div id="nav-button" onclick="document.getElementById('top-nav').classList.toggle('collapsed')"></div>
+    <a id="phone" href="tel:+74732956060" itemprop="telephone">+7(473) 295-60-60</a>
+
+    <div id="top-nav"><!--/* class="collapsed" */-->
+        <div id="top-nav__wrapper" onclick="this.parentElement.classList.toggle('collapsed')"></div>
+            <ul>
             <li><a href="/">ГЛАВНАЯ</a></li>
             <li th:each="categories : ${categories}" th:value="${categories.id}">
                 <a th:href="${(categories.path != null and categories.path != 'null' and categories.path.length  > 0)

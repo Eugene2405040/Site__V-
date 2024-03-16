@@ -1,4 +1,3 @@
-/* TODO: replace to another separated file for using only with desktop computers */
 @media screen and (min-width: 741px) {
     main {
         font-size: 20px;
@@ -12,43 +11,49 @@
         margin: 0 auto;
         max-width: 1400px;
     }
-    #top_section{
-        max-width: 1200px;
-        margin: auto;
+    #top-section{
+        padding: 60px 0;
     }
 
-    .top_image {
+    .top-image {
         background-size: 50%;
+       /* max-width: 1400px;
+        margin: auto;*/
+
     }
 
     #call_me {
         width: fit-content;
     }
+    #call_me input {
+        margin: 30px 10px 0;
+        padding: 10px;
+        min-width: 350px;
+        font-size: 28px;
+    }
 
+    ._2-column{
+        display: inline-block;
+        width: 49%;
+        vertical-align: top;
+        padding-left: 50px;
+    }
+/*
+    table{
+        max-width: 741px;
+        margin: auto;
+    }
+*/
     .why-us ul {
         flex-direction: row;
-        justify-content: space-around;
+        display: flex;
+        justify-content: space-between;
     }
-    .why-us li {
+    .why-us ul li {
+        padding: 40px 0;
         width: 45%;
-    }
-
-    .why-us__1:before,
-    .why-us__2:before,
-    .why-us__3:before,
-    .why-us__4:before {
-        content: "";
-        display: block;
-        width: 80px;
-        height: 80px;
-        margin: auto;
-        border: 3px solid #ffa100;
-        border-radius: 50%;
+        flex: 0 1 auto;
     }
 
 
-    footer ul {
-        width: 33%;
-        font-size: 0.7em;
-    }
 }

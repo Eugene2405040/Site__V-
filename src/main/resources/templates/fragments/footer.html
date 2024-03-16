@@ -1,9 +1,42 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<footer th:fragment="footer">
+<footer itemscope="" itemtype="http://schema.org/Organization" th:fragment="footer">
+    <div>
+        <div class="_2-column hr fs-16">
+            <h3>Телефон</h3>
+            <p itemprop="telephone">
+                <a href="tel:+74732956060">+7 (473) 295-60-60</a>
+            </p>
+            <hr>
+        </div>
+        <div class="_2-column hr fs-16">
+            <meta content="" itemprop="name">
+            <h3>Адрес</h3>
+            <p itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+                Воронеж, улица Генерала Лизюкова, 38
+            </p>
+            <hr>
+        </div>
+    </div>
     <div class="fs-12">
         © 2023 Сервис-Центр «Комета». Все права защищены.
         Содержимое сайта не является публичной офертой.
     </div>
+<script>
+let fadingTextToggleArray = Array.from(document.getElementsByClassName("fading-text__toggle"));
+fadingTextToggleArray.forEach((toggle) => {
+    toggle.addEventListener('click', function () {
+        this.parentElement.classList.toggle('fading-text');
+
+        if (this.parentElement.classList.contains('fading-text')){
+            this.innerText = "Показать все"
+            this.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" })
+        } else {
+            this.innerText = "Свернуть"
+        }
+    });
+});
+document.getElementById("top-nav").classList.add('collapsed');
+</script>
 </footer>
 </html>

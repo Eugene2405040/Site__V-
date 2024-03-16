@@ -6,7 +6,8 @@
     <meta name="description" data-th-content="${description}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css" media="all">
+    <link rel="stylesheet" href="/css/wide-style.css" media="screen and (min-width: 741px)">
     <link rel="stylesheet" href="/css/admin/style.css">
 
 <!--    <script src="https://cdn.tiny.cloud/1/ujvuv2asjkkb5b7xlx0wpsbc5r322dasf5w8b99wcpfr5yvi/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>-->
@@ -24,12 +25,12 @@
 
 
 <form id="picForm" method="POST" enctype="multipart/form-data" action="/pictures" target="mytarget">
-    <div name="mytarget" style="width: 800px; height: 125px;"></div>
-    File to upload:
-    <input type="file" name="file"><br />
+<!--    <div name="mytarget" style="width: 800px; height: 125px;"></div>-->
+    Image to upload:<br />
+    <input type="file" name="file">
     Name:
-    <input type="text" name="name"><br /> <br />
-    <input type="submit" value="Upload"> Press here to upload the file!
+    <input type="text" name="name">
+    <input type="submit" value="Upload">
 </form>
 <!-- TODO: implement script-->
 <script>
@@ -107,7 +108,7 @@
         <div>p</div>
         <div>p</div>
         <div>p</div>
-        <div>p</div>
+        <div>Select Image</div>
     </section>
     <label class="required">Body
         <textarea th:utext="${category} ? ${category.page.body}" class="form-data page" id="body" required
@@ -162,7 +163,7 @@
 <script src="/js/admin/logout.js"></script>
 
 <script>
-    document.getElementById("top_nav").classList.add('collapsed');
+
 </script>
 </body>
 </html>

@@ -31,4 +31,9 @@ public class ImageRestController {
     private ResponseEntity<?> getAllPictures(){
         return imageService.getAllPictures();
     }
+
+    @GetMapping("/360/{path}")
+    private ResponseEntity<?> getPictureWithWidth360(@PathVariable String path){
+        return imageService.getPictureWidth360(path);
+    }
 }

@@ -13,15 +13,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
-import java.nio.charset.StandardCharsets;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class ImageService {
 
     private final ImageRepository imageRepository;
+
     @Autowired
     public ImageService(ImageRepository imageRepository) {
         this.imageRepository = imageRepository;
@@ -43,7 +40,7 @@ public class ImageService {
 
         try {
             imageRepository.save(picture);
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .header("path", picture.getPath())
                     .contentType(MediaType.parseMediaType("image/webp"))
@@ -65,26 +62,38 @@ public class ImageService {
     @SneakyThrows
     public ResponseEntity<?> getPicture(String path) {
         var picture = imageRepository.findByPath(path).orElse(null);
-
         if (picture == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 
         var pictureBody = new InputStreamResource(new ByteArrayInputStream(picture.getBody()));
 
-        System.out.println(MediaType.parseMediaType("image/webp"));
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType("image/webp"))
                 .contentLength(picture.getBody().length)
                 .body(pictureBody);
+    }
+    public ResponseEntity<?> getPictureWidth360(String path) {
+        var picture = imageRepository.findByPath(path).orElse(null);
+        if (picture == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        try {
+            var img = WebpImageConverter.resizePictureToWidth360(picture.getBody());
+            return ResponseEntity.ok()
+                    .contentType(MediaType.parseMediaType("image/webp"))
+                    .contentLength(img.length)
+                    .body(new InputStreamResource(new ByteArrayInputStream(img)));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     public ResponseEntity<?> getAllPictures() {
         var pictures = imageRepository.findAll();
         StringBuilder builder = new StringBuilder();
         for (Webp p : pictures) {
-            builder.append("<img src=\"/pictures/")
+            builder.append("<img src=\"/pictures/360/")
                     .append(p.getPath()).append("\" alt=\"\" class=\"\" title=\"")
                     .append(p.getPath()).append("\" style=\"height:120px;margin:40px;\">\n");
         }
         return ResponseEntity.ok(builder.toString());
     }
+
 }

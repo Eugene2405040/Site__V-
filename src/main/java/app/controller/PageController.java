@@ -7,9 +7,11 @@ import app.service.PageService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jdk.jfr.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -31,12 +33,13 @@ public class PageController {
     @Autowired
     public CategoryService categoryService;
 
+
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("title", "Главная");
         model.addAttribute("description", "description");
         Map<String, Category> categoryMap = categoryService.getCategoryPathMap();
-        model.addAttribute("categories", categoryMap.values());
+        model.addAttribute("categories", categoryService.getOrderedCategoryList());
         return "index";
     }
 
@@ -52,7 +55,12 @@ public class PageController {
 
 // TODO: implement visitCounter and statistics
 
+        System.out.println("=============  PageController  =======================");
         System.out.println("httpHeaders.entrySet() -- " + httpHeaders.entrySet());
+        httpHeaders.forEach((s, stringList) -> {
+            System.out.print(s);
+            System.out.println(stringList);
+        });
 
         System.out.println("sessionId -- " + sessionId);
 
@@ -73,12 +81,18 @@ public class PageController {
 
         System.out.println("session.getId() -- " + session.getId());
 
+        System.out.println("=============  PageController  End  =======================");
+
 //-------------------     TODO: End.     -----------------------
 
         ModelAndView modelAndView = new ModelAndView();
         Map<String, Category> categoryMap = categoryService.getCategoryPathMap();
 
-        model.addAttribute("categories", categoryMap.values());
+        model.addAttribute("categories"
+                , categoryService.getOrderedCategoryList()
+                        .stream().filter(category -> category.getParentId() == 0L)
+                        .toList()
+        );
 
         if (!categoryMap.containsKey(path)) {
             modelAndView.setStatus(HttpStatus.NOT_FOUND);
@@ -98,6 +112,11 @@ public class PageController {
         model.addAttribute("h1", page.getH1());
         model.addAttribute("body", page.getBody());
         model.addAttribute("seo", page.getSeoBlock());
+
+        model.addAttribute("published", categoryMap.get(path).getPublished());
+        model.addAttribute("modified", categoryMap.get(path).getModified());
+
+        model.addAttribute("path", path);
         return modelAndView;
     }
 }
