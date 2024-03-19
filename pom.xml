@@ -20,12 +20,6 @@
 
     <dependencies>
 
-        <dependency>
-<!--            TODO: delete dependency-->
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.sejda.imageio/webp-imageio -->
         <dependency>
@@ -103,6 +97,13 @@
             <artifactId>lombok</artifactId>
             <version>RELEASE</version>
             <scope>compile</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.1</version>
         </dependency>
 
     </dependencies>

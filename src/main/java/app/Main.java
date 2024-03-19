@@ -1,18 +1,14 @@
 package app;
 
-import org.springframework.beans.factory.annotation.Value;
+import app.pictures.util.WebpImageConverter;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import javax.xml.bind.JAXBException;
-import java.net.MalformedURLException;
 
-
-@SpringBootApplication
+//@SpringBootApplication
 public class Main {
 
     public static void main(String[] args){
 
-//        WebpImageConverter.printSupportedParams();
+        WebpImageConverter.printSupportedParams();
         SpringApplication.run(Main.class, args);
     }
 

@@ -32,7 +32,10 @@ public class ImageService {
                     .body("Format <b>\" " + file.getContentType() + " \"</b> is not supported.");
         }
 
-        var body = WebpImageConverter.convertImageToWebp(file);
+        byte[] body = null;
+        try {
+             body = WebpImageConverter.convertImageToWebp(file);
+        }catch (Exception e){}
 
         Webp picture = new Webp();
         picture.setPath(path + ".webp");

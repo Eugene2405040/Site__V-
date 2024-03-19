@@ -14,6 +14,39 @@ public class Webp implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String path;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public byte[] getBody() {
+        return body;
+    }
+
+    public void setBody(byte[] body) {
+        this.body = body;
+    }
+
+    public LocalDateTime getLoaded() {
+        return loaded;
+    }
+
+    public void setLoaded(LocalDateTime loaded) {
+        this.loaded = loaded;
+    }
+
     @Lob
     @Column(length = 1000000)
     private byte[] body;
