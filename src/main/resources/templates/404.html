@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>По указанному адресу страница не найдена</title>
-        <link rel="stylesheet" href="/css/reset.css">
-        <link rel="stylesheet" href="/css/style.css">
-    </head>
+<head>
+    <title>По указанному адресу страница не найдена</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/wide-style.css">
+    <style>
+        html{
+            min-height: 100%;
+        }
+        footer{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
 <body>
+<header>
     <nav th:replace="~{fragments/nav :: nav}"></nav>
+</header>
+<main>
     <a href="/admin">admin</a>
 
     <h2>Not found 404</h2>
 
     <a href="/">Перейти на главную страницу</a>
 
-    <footer th:replace="~{fragments/footer :: footer}"></footer>
+</main>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
 </body>
 </html>

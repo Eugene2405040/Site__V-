@@ -3,20 +3,20 @@
 <nav th:fragment="nav">
     <a id="home-button" href="/" title="ГЛАВНАЯ"></a>
 
-    <div id="nav-button" onclick="document.getElementById('top_nav').classList.toggle('collapsed')"></div>
+    <div id="nav-button" onclick="document.getElementById('top-nav').classList.toggle('collapsed');"></div>
 
-    <div id="top-nav"<!--/* class="collapsed" */-->>
+    <div id="top-nav"><!--/* class="collapsed" */-->
 
-    <div id="top-nav__wrapper" onclick="this.parentElement.classList.toggle('collapsed')"></div>
+        <div id="top-nav__wrapper" onclick="this.parentElement.classList.toggle('collapsed');"></div>
 
-    <ul>
-        <li><a href="/">Site</a></li>
-        <li><a href="/admin">Admin</a></li>
-        <li><a href="/admin/delete">Delete page</a></li>
-        <li><a href="/admin/create">Create page</a></li>
-        <li><a href="/admin/update">Update page</a></li>
-        <li><a href="/log-out" id="logout">logout</a></li>
-    </ul>
+        <ul>
+            <li><a href="/">Site</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/admin/delete">Delete page</a></li>
+            <li><a href="/admin/create">Create page</a></li>
+            <li><a href="/admin/update">Update page</a></li>
+            <li><a href="/log-out" id="logout">logout</a></li>
+        </ul>
 
     </div>
 
